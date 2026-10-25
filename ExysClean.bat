@@ -9,11 +9,10 @@ title ExysClean - Otimização de Sistema ☘️
 
 net session >nul 2>&1
 if "%errorLevel%"=="0" goto menu
-mshta vbscript:msgbox("O ExysClean precisa ser executado como Administrador! Clique com o botao direito e selecione 'Executar como Administrador'.",16,"ExysClean - Falta de permissão.")(window.close) >nul 2>&1 || (
-    echo [ERRO] Falta de privilegios!
-    echo Clique com o botao direito no script e selecione 'Executar como Administrador'.
-    pause
-)
+
+echo msgbox "O ExysClean precisa ser executado como Administrador! Clique com o botão direito e selecione 'Executar como Administrador'.", 16, "ExysClean - Falta de permissão" > "%temp%\AvisoAdmin.vbs"
+wscript "%temp%\AvisoAdmin.vbs"
+del "%temp%\AvisoAdmin.vbs"
 exit
 
 :menu
